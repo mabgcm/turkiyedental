@@ -6211,15 +6211,15 @@ input[type=radio] {
 }
 
 .contact-info .boxes-wrapper>[class*=col-]:nth-of-type(1) .contact-box {
-  background-color: #21cdc0;
+  background-color: #2DD4BF;
 }
 
 .contact-info .boxes-wrapper>[class*=col-]:nth-of-type(2) .contact-box {
-  background-color: #3851a2;
+  background-color: #0EA5E9;
 }
 
 .contact-info .boxes-wrapper>[class*=col-]:nth-of-type(3) .contact-box {
-  background-color: #2d4990;
+  background-color: #1E3A8A;
 }
 
 .contact-info .contact-box {
