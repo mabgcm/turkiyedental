@@ -516,6 +516,28 @@
   <script src="assets/js/jquery-3.5.1.min.js"></script>
   <script src="assets/js/plugins.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+document.getElementById('secondOpinionForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const out = document.querySelector('.contact-result');
+
+  try {
+    const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+    const data = await res.json();
+
+    if (res.ok && data.ok) {
+      // ✅ Redirect to thank-you page after success
+      window.location.href = "/thank-you.html";
+    } else {
+      out.innerHTML = '<div class="alert alert-danger">Error: ' + (data.error || 'Unable to send') + '</div>';
+    }
+  } catch (err) {
+    console.error(err);
+    out.innerHTML = '<div class="alert alert-danger">Server error. Please try again later.</div>';
+  }
+});
+</script>
 </body>
 
 </html>
