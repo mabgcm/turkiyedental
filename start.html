@@ -182,99 +182,234 @@
         <div class="row">
           <div class="col-12">
             <div class="contact-panel d-flex flex-wrap">
-              <form class="contact-panel__form" method="post" action="assets/php/contact.php" id="contactForm">
+              <form class="contact-panel__form" method="post" action="assets/php/contact.php" id="secondOpinionForm" enctype="multipart/form-data">
                 <div class="row">
-                  <div class="col-sm-12">
-                    <h4 class="contact-panel__title">Book An Appointment</h4>
-                    <p class="contact-panel__desc mb-30">Please feel welcome to contact our friendly reception staff
-                      with any general or medical enquiry. Our doctors will receive or return any urgent calls.
-                    </p>
-                  </div>
-                  <div class="col-sm-6 col-md-6 col-lg-6">
-                    <div class="form-group">
-                      <i class="icon-widget form-group-icon"></i>
-                      <select class="form-control">
-                        <option value="0">Choose Clinic</option>
-                        <option value="1">Pathology Clinic</option>
-                        <option value="2">Pathology Clinic</option>
-                      </select>
+                    <div class="col-sm-12">
+                    <h4 class="contact-panel__title">Get Your Free Dental Second Opinion</h4>
+                    <p class="contact-panel__desc mb-30">Share a few details and your files. Our dentists will review and send you a personalized plan.</p>
                     </div>
-                  </div><!-- /.col-lg-6 -->
-                  <div class="col-sm-6 col-md-6 col-lg-6">
+
+                    <!-- Name (required) -->
+                    <div class="col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group">
-                      <i class="icon-user form-group-icon"></i>
-                      <select class="form-control">
-                        <option value="0">Choose Doctor</option>
-                        <option value="1">Ahmed Abdallah</option>
-                        <option value="2">Mahmoud Begha</option>
-                      </select>
+                        <i class="icon-news form-group-icon"></i>
+                        <input type="text" class="form-control" placeholder="Name *" id="name" name="name" required>
                     </div>
-                  </div><!-- /.col-lg-6 -->
-                  <div class="col-sm-6 col-md-6 col-lg-6">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group">
-                      <i class="icon-news form-group-icon"></i>
-                      <input type="text" class="form-control" placeholder="Name" id="contact-name" name="contact-name"
-                        required>
+                        <i class="icon-email form-group-icon"></i>
+                        <input type="email" class="form-control" placeholder="Email" id="email" name="email">
                     </div>
-                  </div><!-- /.col-lg-6 -->
-                  <div class="col-sm-6 col-md-6 col-lg-6">
+                    </div>
+
+                    <!-- Phone (required) -->
+                    <div class="col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group">
-                      <i class="icon-email form-group-icon"></i>
-                      <input type="email" class="form-control" placeholder="Email" id="contact-email"
-                        name="contact-email" required>
+                        <i class="icon-phone form-group-icon"></i>
+                        <input type="tel" class="form-control" placeholder="Phone *" id="phone" name="phone" required>
                     </div>
-                  </div><!-- /.col-lg-6 -->
-                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    </div>
+
+                    <!-- Requested Treatment (required) -->
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <i class="icon-widget form-group-icon"></i>
+                            <select class="form-control" id="requested-treatment" name="requested_treatment" required>
+                            <option value="">Requested Treatment *</option>
+                            <option>Dental Implants</option>
+                            <option>All-on-4 / All-on-6</option>
+                            <option>Veneers</option>
+                            <option>Zirconium Crowns</option>
+                            <option>Root Canal</option>
+                            <option>Gum Treatment</option>
+                            <option>Smile Makeover</option>
+                            <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col form-group">
+                        <label for="files" class="custom-file-upload">
+                            <i class="fas fa-paperclip"></i> Choose Files
+                        </label>
+                        <input id="files" name="files[]" type="file" multiple accept="image/*,.pdf,.jpg,.jpeg,.png,.webp,.heic" />
+                        <small class="form-text text-muted">Attach dental selfies and/or X-rays (JPG, PNG, PDF). You can select multiple files.</small>
+                        <span class="file-name" id="file-name">No file chosen</span>
+                        </div>
+
+                        <script>
+                        const fileInput = document.getElementById("files");
+                        const fileName = document.getElementById("file-name");
+                        fileInput.addEventListener("change", () => {
+                            const names = Array.from(fileInput.files).map(f => f.name).join(", ");
+                            fileName.textContent = names || "No file chosen";
+                        });
+                        </script>
+
+                    <!-- Divider / Section Title -->
+                    <div class="col-sm-12">
+                    <h5 class="mt-10 mb-20">Optional Medical Details</h5>
+                    </div>
+
+                    <!-- 1. Chronic illnesses / meds / HbA1c -->
+                    <div class="col-sm-12">
                     <div class="form-group">
-                      <i class="icon-phone form-group-icon"></i>
-                      <input type="text" class="form-control" placeholder="Phone" id="contact-Phone"
-                        name="contact-phone" required>
+                        <i class="icon-health-report form-group-icon"></i>
+                        <textarea class="form-control" id="chronic" name="chronic"
+                        placeholder="1) Chronic illnesses/conditions (esp. diabetes). List medications (incl. blood thinners). If diabetic, your HbA1c level."
+                        rows="3"></textarea>
+                        <small class="form-text text-muted">
+                        Important: For implant surgery, HbA1c &lt; 7.0% (53 mmol/mol) is generally recommended. ≥ 7.5% (58 mmol/mol) increases risk.
+                        </small>
                     </div>
-                  </div><!-- /.col-lg-4 -->
-                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    </div>
+
+                    <!-- 2. Oral pain / bleeding / gum disease -->
+                    <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <i class="icon-heart2 form-group-icon"></i>
+                        <textarea class="form-control" id="oral-issues" name="oral_issues"
+                        placeholder="2) Oral pain, bleeding, and/or gum disease?" rows="3"></textarea>
+                    </div>
+                    </div>
+
+                    <!-- 3. Wobbly teeth -->
+                    <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <i class="icon-dentist form-group-icon"></i>
+                        <textarea class="form-control" id="mobile-teeth" name="mobile_teeth"
+                        placeholder="3) Do any teeth move with pressure? Which ones? (Mark on image if possible.)" rows="3"></textarea>
+                    </div>
+                    </div>
+
+                    <!-- 4. Missing teeth duration -->
+                    <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <i class="icon-clock form-group-icon"></i>
+                        <input type="text" class="form-control" id="missing-duration" name="missing_duration"
+                            placeholder="4) How long have you had missing tooth/teeth?">
+                    </div>
+                    </div>
+
+                    <!-- 5. Smoking -->
+                    <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <i class="icon-news form-group-icon"></i>
+                        <input type="text" class="form-control" id="smoking" name="smoking"
+                            placeholder="5) Do you smoke? How many/how often?">
+                    </div>
+                    </div>
+
+                    <!-- 7. Travel dates -->
+                    <div class="col-sm-12">
+                    <div class="form-group">
+                        <i class="icon-calendar form-group-icon"></i>
+                        <input type="text" class="form-control" id="travel-dates" name="travel_dates"
+                            placeholder="6) Do you have dates in mind for treatment/holiday?">
+                    </div>
+                    </div>
+
+                    <!-- 8. City / Postcode / Departure airport -->
+                    <div class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <i class="icon-location form-group-icon"></i>
+                        <input type="text" class="form-control" id="city" name="city"
+                            placeholder="Current city">
+                    </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <i class="icon-location form-group-icon"></i>
+                        <input type="text" class="form-control" id="postcode" name="postcode"
+                            placeholder="Postcode">
+                    </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <i class="icon-airplane form-group-icon"></i>
+                        <input type="text" class="form-control" id="departure-airport" name="departure_airport"
+                            placeholder="Departure airport">
+                    </div>
+                    </div>
+
+                    <!-- Medications & dose -->
+                    <div class="col-sm-12">
+                    <div class="form-group">
+                        <i class="icon-medicine form-group-icon"></i>
+                        <textarea class="form-control" id="medications" name="medications"
+                        placeholder="7) Daily medications and dose (with brief reason)" rows="3"></textarea>
+                    </div>
+                    </div>
+
+                    <!-- Medical conditions -->
+                    <div class="col-sm-12">
+                    <div class="form-group">
+                        <i class="icon-health-report form-group-icon"></i>
+                        <textarea class="form-control" id="medical-conditions" name="medical_conditions"
+                        placeholder="8) Medical conditions" rows="3"></textarea>
+                    </div>
+                    </div>
+
+                    <!-- Allergies -->
+                    <div class="col-12">
+                    <div class="form-group">
+                        <i class="icon-medicine form-group-icon"></i>
+                        <textarea class="form-control" id="allergies" name="allergies"
+                        placeholder="9) Allergies" rows="2"></textarea>
+                    </div>
+                    </div>
+
+                    <!-- Last general doctor appointment -->
+                    <div class="col">
+                    <small class="form-text">10) Your last general doctor appointment</small>
                     <div class="form-group form-group-date">
-                      <i class="icon-calendar form-group-icon"></i>
-                      <input type="date" class="form-control" id="contact-date" name="contact-date" required>
+                        <i class="icon-calendar form-group-icon"></i>
+                        <input type="date" class="form-control" id="last-gp" name="last_gp"
+                            placeholder="Last GP appointment">
                     </div>
-                  </div><!-- /.col-lg-4 -->
-                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    </div>
+
+                    <!-- Last blood test -->
+                    <div class="col">
+                    <small class="form-text">11) Your last blood test</small>
                     <div class="form-group form-group-date">
-                      <i class="icon-clock form-group-icon"></i>
-                      <input type="time" class="form-control" id="contact-time" name="contact-time" required>
+                        <i class="icon-calendar form-group-icon"></i>
+                        <input type="date" class="form-control" id="last-blood-test" name="last_blood_test"
+                            placeholder="Last blood test">
                     </div>
-                  </div><!-- /.col-lg-4 -->
-                  <div class="col-12">
+                    </div>
+
+                    <!-- Recent surgeries -->
+                    <div class="col-sm-12">
+                    <div class="form-group">
+                        <i class="icon-health-report form-group-icon"></i>
+                        <textarea class="form-control" id="surgeries" name="surgeries"
+                        placeholder="12) Most recent surgeries (if any)" rows="2"></textarea>
+                    </div>
+                    </div>
+
+                    <!-- Insurance -->
+                    <div class="col-sm-12">
+                    <div class="form-group">
+                        <i class="icon-news form-group-icon"></i>
+                        <textarea class="form-control" id="insurance" name="insurance"
+                        placeholder="13) Do you have medical insurance back home? What kind?" rows="2"></textarea>
+                    </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="col-12">
                     <button type="submit" class="btn btn__secondary btn__rounded btn__block btn__xhight mt-10">
-                      <span>Book Appointment</span> <i class="icon-arrow-right"></i>
+                        <span>Get Free Second Opinion</span> <i class="icon-arrow-right"></i>
                     </button>
                     <div class="contact-result"></div>
-                  </div><!-- /.col-lg-12 -->
+                    </div>
                 </div><!-- /.row -->
-              </form>
-              <div
-                class="contact-panel__info d-flex flex-column justify-content-between bg-overlay bg-overlay-primary-gradient">
-                <div class="bg-img"><img src="assets/images/banners/1.jpg" alt="banner"></div>
-                <div>
-                  <h4 class="contact-panel__title color-white">Quick Contacts</h4>
-                  <p class="contact-panel__desc font-weight-bold color-white mb-30">Please feel free to contact our
-                    friendly staff with any medical enquiry.
-                  </p>
-                </div>
-                <div>
-                  <ul class="contact__list list-unstyled mb-30">
-                    <li>
-                      <i class="icon-phone"></i><a href="tel:+5565454117">Emergency Line: (002) 01061245741</a>
-                    </li>
-                    <li>
-                      <i class="icon-location"></i><a href="#">Location: Brooklyn, New York</a>
-                    </li>
-                    <li>
-                      <i class="icon-clock"></i><a href="contact-us.html">Mon - Fri: 8:00 am - 7:00 pm</a>
-                    </li>
-                  </ul>
-                  <a href="#" class="btn btn__white btn__rounded btn__outlined">Contact Us</a>
-                </div>
-              </div>
+                </form>
+              
             </div>
           </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->

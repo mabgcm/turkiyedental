@@ -8633,4 +8633,54 @@ textarea.form-control {
   color: #848e9f;
 }
 
+/* ===========================
+   Custom File Upload Styling
+=========================== */
+/* Center the custom file upload button */
+
+.form-group input[type="file"] {
+  display: none;
+}
+
+
+
+.custom-file-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 90%;
+  height: 60px;
+  padding: 0 20px;
+  border: 2px dashed #e6e8eb;
+  border-radius: 55px;
+  background-color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #26365e;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  border-color: #21cdc0;
+  color: #21cdc0;
+  background-color: #f8fffe;
+}
+
+.custom-file-upload i {
+  margin-right: 10px;
+  color: #21cdc0;
+  font-size: 18px;
+}
+
+/* File name preview (optional aesthetic improvement) */
+.file-name {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #848e9f;
+  font-style: italic;
+}
+
 /*# sourceMappingURL=style.css.map */
