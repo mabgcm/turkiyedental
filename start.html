@@ -551,7 +551,7 @@
         const data = await res.json();
         if (res.ok && data.ok) {
         // Redirect after success
-        window.location.href = "/thank-you.html";
+        window.location.href = "/thank.html";
         } else {
         out.innerHTML = '<div class="alert alert-danger">Error: ' + (data.error || 'Unable to send') + '</div>';
         }
