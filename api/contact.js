@@ -1,3 +1,6 @@
+// Updated serverless contact handler with robust attachment parsing
+// (handles input names: "files", "files[]", "file", "upload")
+//  [oai_citation:0‡contact.js](sediment://file_00000000ed3c62309c6774aafa38c5a5)
 import nodemailer from 'nodemailer';
 import formidable from 'formidable';
 
@@ -8,6 +11,16 @@ function parseForm(req) {
     return new Promise((resolve, reject) => {
         form.parse(req, (err, fields, files) => (err ? reject(err) : resolve({ fields, files })));
     });
+}
+
+// Pick an array of files regardless of the field name/shape
+function pickFileArray(filesObj) {
+    if (!filesObj || typeof filesObj !== 'object') return [];
+    // Try common field names
+    const possibleKeys = ['files', 'files[]', 'file', 'upload', 'attachment', 'attachments'];
+    const key = Object.keys(filesObj).find(k => possibleKeys.includes(k)) || Object.keys(filesObj)[0];
+    const raw = key ? filesObj[key] : undefined;
+    return Array.isArray(raw) ? raw : raw ? [raw] : [];
 }
 
 export default async function handler(req, res) {
@@ -61,13 +74,14 @@ export default async function handler(req, res) {
       </table>
     </body></html>`;
 
-        // Collect attachments from input name="files[]"
-        const raw = files.files;
-        const list = Array.isArray(raw) ? raw : raw ? [raw] : [];
-        const attachments = list.map(f => ({
-            filename: f.originalFilename || 'file',
-            path: f.filepath,
-            contentType: f.mimetype || 'application/octet-stream',
+        // Build attachments robustly (supports files, files[], file, upload, etc.)
+        const fileArray = pickFileArray(files);
+        const attachments = fileArray.map(f => ({
+            filename: f.originalFilename || f.newFilename || 'attachment',
+            path: f.filepath, // Vercel tmp path works for nodemailer
+            contentType: f.mimetype || 'application/octet-stream'
+            // Alternative if needed:
+            // content: fs.createReadStream(f.filepath)
         }));
 
         const transporter = nodemailer.createTransport({
