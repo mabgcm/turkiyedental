@@ -182,7 +182,7 @@
         <div class="row">
           <div class="col-12">
             <div class="contact-panel d-flex flex-wrap">
-              <form action="/api/contact" method="post" enctype="multipart/form-data" id="secondOpinionForm">
+              <form action="/api/contact" method="post" enctype="multipart/form-data" id="secondOpinionForm" novalidate>
                 <div class="row">
                     <div class="col-sm-12">
                     <h4 class="contact-panel__title">Get Your Free Dental Second Opinion</h4>
@@ -517,27 +517,50 @@
   <script src="assets/js/plugins.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-document.getElementById('secondOpinionForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const out = document.querySelector('.contact-result');
+    document.getElementById('secondOpinionForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const out  = document.querySelector('.contact-result');
 
-  try {
-    const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
-    const data = await res.json();
+    // Custom validation (since native is disabled with novalidate)
+    const name   = form.querySelector('#name');
+    const phone  = form.querySelector('#phone');
+    const treat  = form.querySelector('#requested-treatment'); // hidden by plugin
 
-    if (res.ok && data.ok) {
-      // ✅ Redirect to thank-you page after success
-      window.location.href = "/thank.html";
-    } else {
-      out.innerHTML = '<div class="alert alert-danger">Error: ' + (data.error || 'Unable to send') + '</div>';
+    // basic checks
+    if (!name.value.trim()) {
+        out.innerHTML = '<div class="alert alert-danger">Please enter your name.</div>';
+        name.focus();
+        return;
     }
-  } catch (err) {
-    console.error(err);
-    out.innerHTML = '<div class="alert alert-danger">Server error. Please try again later.</div>';
-  }
-});
-</script>
+    if (!phone.value.trim()) {
+        out.innerHTML = '<div class="alert alert-danger">Please enter your phone.</div>';
+        phone.focus();
+        return;
+    }
+    if (!treat.value) {
+        out.innerHTML = '<div class="alert alert-danger">Please choose a requested treatment.</div>';
+        // focus the visible proxy select if you use a custom select plugin (optional)
+        const proxy = document.querySelector('.nice-select, .custom-select, [data-select-proxy]');
+        if (proxy) proxy.focus();
+        return;
+    }
+
+    try {
+        const res  = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        const data = await res.json();
+        if (res.ok && data.ok) {
+        // Redirect after success
+        window.location.href = "/thank-you.html";
+        } else {
+        out.innerHTML = '<div class="alert alert-danger">Error: ' + (data.error || 'Unable to send') + '</div>';
+        }
+    } catch (err) {
+        console.error(err);
+        out.innerHTML = '<div class="alert alert-danger">Server error. Please try again later.</div>';
+    }
+    });
+    </script>
 </body>
 
 </html>
