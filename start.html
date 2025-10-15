@@ -237,17 +237,33 @@
                         </label>
                         <input type="file" id="files" name="files" multiple accept="image/*,.pdf,.jpg,.jpeg,.png,.webp,.heic">
                         <small class="form-text text-muted">Attach dental selfies and/or X-rays (JPG, PNG, PDF). You can select multiple files.</small>
-                        <span class="file-name text-danger" id="file-name">No file chosen</span>
+                        <span class="file-name" id="file-name">No file chosen</span>
                         </div>
 
                         <script>
+                        const fileInput = document.getElementById('files');
+                        const fileName = document.getElementById('file-name');
+
+                        fileInput.addEventListener('change', () => {
+                        if (fileInput.files.length > 0) {
+                            const names = Array.from(fileInput.files).map(f => f.name).join(', ');
+                            fileName.textContent = names;
+                            fileName.classList.add('has-file');
+                        } else {
+                            fileName.textContent = 'No file chosen';
+                            fileName.classList.remove('has-file');
+                        }
+                        });
+                        </script>
+
+                        <!-- <script>
                         const fileInput = document.getElementById("files");
                         const fileName = document.getElementById("file-name");
                         fileInput.addEventListener("change", () => {
                             const names = Array.from(fileInput.files).map(f => f.name).join(", ");
                             fileName.textContent = names || "No file chosen";
                         });
-                        </script>
+                        </script> -->
 
                     <!-- Divider / Section Title -->
                     <div class="col-sm-12">

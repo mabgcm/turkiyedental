@@ -8674,13 +8674,25 @@ textarea.form-control {
   font-size: 18px;
 }
 
-/* File name preview (optional aesthetic improvement) */
+/* Hide default input */
+#files {
+  display: none;
+}
+
+/* File name preview */
 .file-name {
   display: block;
   margin-top: 8px;
   font-size: 13px;
-  color: #848e9f;
   font-style: italic;
+  font-weight: 500;
+  color: #e74c3c;
+  /* red for no file */
+}
+
+.file-name.has-file {
+  color: #28a745;
+  /* green when file selected */
 }
 
 /* ===========================
