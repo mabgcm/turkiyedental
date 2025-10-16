@@ -2,18 +2,90 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="description" content="Medcity - Medical Healthcare HTML5 Template">
-  <link href="assets/images/favicon/favicon.png" rel="icon">
-  <title>Medcity - Medical Healthcare HTML5 Template</title>
+  <!-- Charset & Responsive -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
+  <!-- Primary SEO -->
+  <title>Turkiye Dental — Free Dental Second Opinions & Treatment Planning in Türkiye</title>
+  <meta name="description" content="Get a free, unbiased dental second opinion from expert dentists in Türkiye. Compare treatment plans and prices across Istanbul, Antalya, and Izmir. Upload X-rays/selfies and receive a personalized plan before you travel." />
+  <link rel="canonical" href="https://turkiyedental.clinic/" />
+
+  <!-- Indexing -->
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <!-- Language/Region (update as needed) -->
+  <link rel="alternate" href="https://turkiyedental.clinic/" hreflang="en" />
+  <link rel="alternate" href="https://turkiyedental.clinic/tr/" hreflang="tr" />
+  <link rel="alternate" href="https://turkiyedental.clinic/es/" hreflang="es" />
+  <link rel="alternate" href="https://turkiyedental.clinic/" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Turkiye Dental" />
+  <meta property="og:title" content="Free Dental Second Opinions & Treatment Planning in Türkiye" />
+  <meta property="og:description" content="Upload dental selfies/X-rays and get an expert second opinion. Compare options and prices across leading clinics in Istanbul, Antalya, and Izmir." />
+  <meta property="og:url" content="https://turkiyedental.clinic/" />
+  <meta property="og:image" content="https://turkiyedental.clinic/assets/images/og/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/site.webmanifest" />
+  <meta name="theme-color" content="#21cdc0" />
+
+  <!-- Performance: Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
+  <!-- If you use Font Awesome 5 in your theme, keep this; otherwise upgrade to v6 CDN -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-  <link rel="stylesheet" href="assets/css/libraries.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="assets/css/libraries.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Structured Data: Organization & Site Search (update URLs/socials as needed) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Turkiye Dental",
+        "url": "https://turkiyedental.clinic/",
+        "logo": "https://turkiyedental.clinic/assets/images/logo/logo.png",
+        "sameAs": [
+          "https://www.facebook.com/yourpage",
+          "https://www.instagram.com/yourpage",
+          "https://twitter.com/yourpage"
+        ],
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+90-555-555-55-55",
+          "contactType": "customer service",
+          "areaServed": "Worldwide",
+          "availableLanguage": ["en","tr","es"]
+        }]
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://turkiyedental.clinic/",
+        "name": "Turkiye Dental",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://turkiyedental.clinic/search?q={query}",
+          "query-input": "required name=query"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -183,248 +255,272 @@
           <div class="col-12">
             <div class="contact-panel d-flex flex-wrap">
               <form action="/api/contact" method="post" enctype="multipart/form-data" id="secondOpinionForm" novalidate>
-                <div class="row">
-                    <div class="col-sm-12">
-                    <h4 class="contact-panel__title">Get Your Free Dental Second Opinion</h4>
-                    <p class="contact-panel__desc mb-30">Share a few details and your files. Our dentists will review and send you a personalized plan.</p>
-                    </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="contact-panel__title">Get Your Free Dental Second Opinion</h4>
+      <p class="contact-panel__desc mb-30">Share a few details and your files. Our dentists will review and send you a personalized plan.</p>
+    </div>
 
-                    <!-- Name (required) -->
-                    <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div class="form-group">
-                        <i class="icon-news form-group-icon"></i>
-                        <input type="text" class="form-control" placeholder="Name *" id="name" name="name" required>
-                    </div>
-                    </div>
+    <!-- =========================
+         1) PERSONAL DETAILS (REQUIRED)
+         Rationale: We collect only what’s essential to identify you, contact you, and understand your primary need.
+       ========================= -->
+    <div class="col-12"><hr class="mb-20"></div>
+    <div class="col-12">
+      <h5 class="mt-10 mb-10">Personal Details (Required)</h5>
+      <p class="contact-panel__desc mb-20">
+        These basics let us reach you quickly and tailor a precise treatment suggestion. Your requested treatment
+        and any images/X-rays help our dentists prepare an accurate, unbiased second opinion.
+      </p>
+    </div>
 
-                    <!-- Email -->
-                    <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div class="form-group">
-                        <i class="icon-email form-group-icon"></i>
-                        <input type="email" class="form-control" placeholder="Email" id="email" name="email">
-                    </div>
-                    </div>
+    <!-- Name -->
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <div class="form-group">
+        <i class="icon-news form-group-icon"></i>
+        <input type="text" class="form-control" placeholder="Name *" id="name" name="name" required>
+      </div>
+    </div>
 
-                    <!-- Phone (required) -->
-                    <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div class="form-group">
-                        <i class="icon-phone form-group-icon"></i>
-                        <input type="tel" class="form-control" placeholder="Phone *" id="phone" name="phone" required>
-                    </div>
-                    </div>
+    <!-- Email -->
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <div class="form-group">
+        <i class="icon-email form-group-icon"></i>
+        <input type="email" class="form-control" placeholder="Email" id="email" name="email">
+      </div>
+    </div>
 
-                    <!-- Requested Treatment (required) -->
-                    <div class="col-sm-12 col-md-6 col-lg-6">
-                        <div class="form-group">
-                            <i class="icon-widget form-group-icon"></i>
-                            <select class="form-control" id="requested-treatment" name="requested_treatment" required>
-                            <option value="">Requested Treatment *</option>
-                            <option>Dental Implants</option>
-                            <option>All-on-4 / All-on-6</option>
-                            <option>Veneers</option>
-                            <option>Zirconium Crowns</option>
-                            <option>Root Canal</option>
-                            <option>Gum Treatment</option>
-                            <option>Smile Makeover</option>
-                            <option>Other</option>
-                            </select>
-                        </div>
-                    </div>
+    <!-- Phone -->
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <div class="form-group">
+        <i class="icon-phone form-group-icon"></i>
+        <input type="tel" class="form-control" placeholder="Phone *" id="phone" name="phone" required>
+      </div>
+    </div>
 
-                    <div class="col form-group">
-                        <label for="files" class="custom-file-upload">
-                            <i class="fas fa-paperclip"></i> Choose Files
-                        </label>
-                        <input type="file" id="files" name="files" multiple accept="image/*,.pdf,.jpg,.jpeg,.png,.webp,.heic">
-                        <small class="form-text text-muted">Attach dental selfies and/or X-rays (JPG, PNG, PDF). You can select multiple files.</small>
-                        <span class="file-name" id="file-name">No file chosen</span>
-                        </div>
+    <!-- Requested Treatment -->
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <div class="form-group">
+        <i class="icon-widget form-group-icon"></i>
+        <select class="form-control" id="requested-treatment" name="requested_treatment" required>
+          <option value="">Requested Treatment *</option>
+          <option>Dental Implants</option>
+          <option>All-on-4 / All-on-6</option>
+          <option>Veneers</option>
+          <option>Zirconium Crowns</option>
+          <option>Root Canal</option>
+          <option>Gum Treatment</option>
+          <option>Smile Makeover</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
 
-                        <script>
-                        const fileInput = document.getElementById('files');
-                        const fileName = document.getElementById('file-name');
+    <!-- Files -->
+    <div class="col-12">
+      <div class="form-group">
+        <label for="files" class="custom-file-upload">
+          <i class="fas fa-paperclip"></i> Choose Files
+        </label>
+        <input type="file" id="files" name="files" multiple accept="image/*,.pdf,.jpg,.jpeg,.png,.webp,.heic">
+        <small class="form-text text-muted">Attach dental selfies and/or X-rays (JPG, PNG, PDF). You can select multiple files.</small>
+        <span class="file-name" id="file-name">No file chosen</span>
+      </div>
+    </div>
 
-                        fileInput.addEventListener('change', () => {
-                        if (fileInput.files.length > 0) {
-                            const names = Array.from(fileInput.files).map(f => f.name).join(', ');
-                            fileName.textContent = names;
-                            fileName.classList.add('has-file');
-                        } else {
-                            fileName.textContent = 'No file chosen';
-                            fileName.classList.remove('has-file');
-                        }
-                        });
-                        </script>
+    <script>
+      const fileInput = document.getElementById('files');
+      const fileName = document.getElementById('file-name');
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 0) {
+          const names = Array.from(fileInput.files).map(f => f.name).join(', ');
+          fileName.textContent = names;
+          fileName.classList.add('has-file');
+        } else {
+          fileName.textContent = 'No file chosen';
+          fileName.classList.remove('has-file');
+        }
+      });
+    </script>
 
-                        <!-- <script>
-                        const fileInput = document.getElementById("files");
-                        const fileName = document.getElementById("file-name");
-                        fileInput.addEventListener("change", () => {
-                            const names = Array.from(fileInput.files).map(f => f.name).join(", ");
-                            fileName.textContent = names || "No file chosen";
-                        });
-                        </script> -->
+    <!-- =========================
+         2) OPTIONAL MEDICAL DATA
+         Rationale: These details help our dentists assess safety (e.g., diabetes/HbA1c), risks, and clinical priorities.
+         Share only what you’re comfortable with; it improves plan accuracy but is not mandatory.
+       ========================= -->
+    <div class="col-12"><hr class="mb-20"></div>
+    <div class="col-12">
+      <h5 class="mt-10 mb-10">Optional Medical Data</h5>
+      <p class="contact-panel__desc mb-20">
+        These questions guide clinical decision-making and suitability for certain procedures (implants, surgery, etc.).
+        The more context you provide, the more precise and realistic your second opinion will be.
+      </p>
+    </div>
 
-                    <!-- Divider / Section Title -->
-                    <div class="col-sm-12">
-                    <h5 class="mt-10 mb-20">Optional Medical Details</h5>
-                    </div>
+    <!-- 1. Chronic / meds / HbA1c -->
+    <div class="col-sm-12">
+      <div class="form-group">
+        <i class="icon-health-report form-group-icon"></i>
+        <textarea class="form-control" id="chronic" name="chronic"
+          placeholder="1) Chronic illnesses/conditions (esp. diabetes). List medications (incl. blood thinners). If diabetic, your HbA1c level."
+          rows="3"></textarea>
+        <small class="form-text text-muted">
+          Important: For implant surgery, HbA1c &lt; 7.0% (53 mmol/mol) is generally recommended. ≥ 7.5% (58 mmol/mol) increases risk.
+        </small>
+      </div>
+    </div>
 
-                    <!-- 1. Chronic illnesses / meds / HbA1c -->
-                    <div class="col-sm-12">
-                    <div class="form-group">
-                        <i class="icon-health-report form-group-icon"></i>
-                        <textarea class="form-control" id="chronic" name="chronic"
-                        placeholder="1) Chronic illnesses/conditions (esp. diabetes). List medications (incl. blood thinners). If diabetic, your HbA1c level."
-                        rows="3"></textarea>
-                        <small class="form-text text-muted">
-                        Important: For implant surgery, HbA1c &lt; 7.0% (53 mmol/mol) is generally recommended. ≥ 7.5% (58 mmol/mol) increases risk.
-                        </small>
-                    </div>
-                    </div>
+    <!-- 2. Oral pain / bleeding / gum disease -->
+    <div class="col-sm-12 col-md-6">
+      <div class="form-group">
+        <i class="icon-heart2 form-group-icon"></i>
+        <textarea class="form-control" id="oral-issues" name="oral_issues"
+          placeholder="2) Oral pain, bleeding, and/or gum disease?" rows="3"></textarea>
+      </div>
+    </div>
 
-                    <!-- 2. Oral pain / bleeding / gum disease -->
-                    <div class="col-sm-12 col-md-6">
-                    <div class="form-group">
-                        <i class="icon-heart2 form-group-icon"></i>
-                        <textarea class="form-control" id="oral-issues" name="oral_issues"
-                        placeholder="2) Oral pain, bleeding, and/or gum disease?" rows="3"></textarea>
-                    </div>
-                    </div>
+    <!-- 3. Wobbly teeth -->
+    <div class="col-sm-12 col-md-6">
+      <div class="form-group">
+        <i class="icon-dentist form-group-icon"></i>
+        <textarea class="form-control" id="mobile-teeth" name="mobile_teeth"
+          placeholder="3) Do any teeth move with pressure? Which ones? (Mark on image if possible.)" rows="3"></textarea>
+      </div>
+    </div>
 
-                    <!-- 3. Wobbly teeth -->
-                    <div class="col-sm-12 col-md-6">
-                    <div class="form-group">
-                        <i class="icon-dentist form-group-icon"></i>
-                        <textarea class="form-control" id="mobile-teeth" name="mobile_teeth"
-                        placeholder="3) Do any teeth move with pressure? Which ones? (Mark on image if possible.)" rows="3"></textarea>
-                    </div>
-                    </div>
+    <!-- 4. Missing teeth duration -->
+    <div class="col-sm-12 col-md-6">
+      <div class="form-group">
+        <i class="icon-clock form-group-icon"></i>
+        <input type="text" class="form-control" id="missing-duration" name="missing_duration"
+               placeholder="4) How long have you had missing tooth/teeth?">
+      </div>
+    </div>
 
-                    <!-- 4. Missing teeth duration -->
-                    <div class="col-sm-12 col-md-6">
-                    <div class="form-group">
-                        <i class="icon-clock form-group-icon"></i>
-                        <input type="text" class="form-control" id="missing-duration" name="missing_duration"
-                            placeholder="4) How long have you had missing tooth/teeth?">
-                    </div>
-                    </div>
+    <!-- 5. Smoking -->
+    <div class="col-sm-12 col-md-6">
+      <div class="form-group">
+        <i class="icon-news form-group-icon"></i>
+        <input type="text" class="form-control" id="smoking" name="smoking"
+               placeholder="5) Do you smoke? How many/how often?">
+      </div>
+    </div>
 
-                    <!-- 5. Smoking -->
-                    <div class="col-sm-12 col-md-6">
-                    <div class="form-group">
-                        <i class="icon-news form-group-icon"></i>
-                        <input type="text" class="form-control" id="smoking" name="smoking"
-                            placeholder="5) Do you smoke? How many/how often?">
-                    </div>
-                    </div>
+    <!-- Medications & dose -->
+    <div class="col-sm-12">
+      <div class="form-group">
+        <i class="icon-medicine form-group-icon"></i>
+        <textarea class="form-control" id="medications" name="medications"
+          placeholder="Daily medications and dose (with brief reason)" rows="3"></textarea>
+      </div>
+    </div>
 
-                    <!-- 7. Travel dates -->
-                    <div class="col-sm-12">
-                    <div class="form-group">
-                        <i class="icon-calendar form-group-icon"></i>
-                        <input type="text" class="form-control" id="travel-dates" name="travel_dates"
-                            placeholder="6) Do you have dates in mind for treatment/holiday?">
-                    </div>
-                    </div>
+    <!-- Medical conditions -->
+    <div class="col-sm-12">
+      <div class="form-group">
+        <i class="icon-health-report form-group-icon"></i>
+        <textarea class="form-control" id="medical-conditions" name="medical_conditions"
+          placeholder="Medical conditions" rows="3"></textarea>
+      </div>
+    </div>
 
-                    <!-- 8. City / Postcode / Departure airport -->
-                    <div class="col-sm-12 col-md-4">
-                    <div class="form-group">
-                        <i class="icon-location form-group-icon"></i>
-                        <input type="text" class="form-control" id="city" name="city"
-                            placeholder="Current city">
-                    </div>
-                    </div>
-                    <div class="col-sm-12 col-md-4">
-                    <div class="form-group">
-                        <i class="icon-location form-group-icon"></i>
-                        <input type="text" class="form-control" id="postcode" name="postcode"
-                            placeholder="Postcode">
-                    </div>
-                    </div>
-                    <div class="col-sm-12 col-md-4">
-                    <div class="form-group">
-                        <i class="icon-airplane form-group-icon"></i>
-                        <input type="text" class="form-control" id="departure-airport" name="departure_airport"
-                            placeholder="Departure airport">
-                    </div>
-                    </div>
+    <!-- Allergies -->
+    <div class="col-12">
+      <div class="form-group">
+        <i class="icon-medicine form-group-icon"></i>
+        <textarea class="form-control" id="allergies" name="allergies"
+          placeholder="Allergies" rows="2"></textarea>
+      </div>
+    </div>
 
-                    <!-- Medications & dose -->
-                    <div class="col-sm-12">
-                    <div class="form-group">
-                        <i class="icon-medicine form-group-icon"></i>
-                        <textarea class="form-control" id="medications" name="medications"
-                        placeholder="7) Daily medications and dose (with brief reason)" rows="3"></textarea>
-                    </div>
-                    </div>
+    <!-- Last GP appointment -->
+    <div class="col-12">
+      <small class="form-text">Your last general doctor appointment</small>
+      <div class="form-group form-group-date">
+        <i class="icon-calendar form-group-icon"></i>
+        <input type="date" class="form-control" id="last-gp" name="last_gp" placeholder="Last GP appointment">
+      </div>
+    </div>
 
-                    <!-- Medical conditions -->
-                    <div class="col-sm-12">
-                    <div class="form-group">
-                        <i class="icon-health-report form-group-icon"></i>
-                        <textarea class="form-control" id="medical-conditions" name="medical_conditions"
-                        placeholder="8) Medical conditions" rows="3"></textarea>
-                    </div>
-                    </div>
+    <!-- Last blood test -->
+    <div class="col-12">
+      <small class="form-text">Your last blood test</small>
+      <div class="form-group form-group-date">
+        <i class="icon-calendar form-group-icon"></i>
+        <input type="date" class="form-control" id="last-blood-test" name="last_blood_test" placeholder="Last blood test">
+      </div>
+    </div>
 
-                    <!-- Allergies -->
-                    <div class="col-12">
-                    <div class="form-group">
-                        <i class="icon-medicine form-group-icon"></i>
-                        <textarea class="form-control" id="allergies" name="allergies"
-                        placeholder="9) Allergies" rows="2"></textarea>
-                    </div>
-                    </div>
+    <!-- Recent surgeries -->
+    <div class="col-sm-12">
+      <div class="form-group">
+        <i class="icon-health-report form-group-icon"></i>
+        <textarea class="form-control" id="surgeries" name="surgeries"
+          placeholder="Most recent surgeries (if any)" rows="2"></textarea>
+      </div>
+    </div>
 
-                    <!-- Last general doctor appointment -->
-                    <div class="col-12">
-                    <small class="form-text">10) Your last general doctor appointment</small>
-                    <div class="form-group form-group-date">
-                        <i class="icon-calendar form-group-icon"></i>
-                        <input type="date" class="form-control" id="last-gp" name="last_gp"
-                            placeholder="Last GP appointment">
-                    </div>
-                    </div>
+    <!-- Insurance -->
+    <div class="col-sm-12">
+      <div class="form-group">
+        <i class="icon-news form-group-icon"></i>
+        <textarea class="form-control" id="insurance" name="insurance"
+          placeholder="Do you have medical insurance back home? What kind?" rows="2"></textarea>
+      </div>
+    </div>
 
-                    <!-- Last blood test -->
-                    <div class="col-12">
-                    <small class="form-text">11) Your last blood test</small>
-                    <div class="form-group form-group-date">
-                        <i class="icon-calendar form-group-icon"></i>
-                        <input type="date" class="form-control" id="last-blood-test" name="last_blood_test"
-                            placeholder="Last blood test">
-                    </div>
-                    </div>
+    <!-- =========================
+         3) OPTIONAL TRAVEL DATA
+         Rationale: Travel info helps us suggest the best city/clinic timing and give realistic logistics and cost expectations.
+         Share only if you want help planning your trip.
+       ========================= -->
+    <div class="col-12"><hr class="mb-20"></div>
+    <div class="col-12">
+      <h5 class="mt-10 mb-10">Optional Travel Data</h5>
+      <p class="contact-panel__desc mb-20">
+        If you have trip preferences, we can align clinic schedules, accommodation, and transfers around your plans.
+        This isn’t required—skip it if you’re undecided.
+      </p>
+    </div>
 
-                    <!-- Recent surgeries -->
-                    <div class="col-sm-12">
-                    <div class="form-group">
-                        <i class="icon-health-report form-group-icon"></i>
-                        <textarea class="form-control" id="surgeries" name="surgeries"
-                        placeholder="12) Most recent surgeries (if any)" rows="2"></textarea>
-                    </div>
-                    </div>
+    <!-- Travel dates -->
+    <div class="col-sm-12">
+      <div class="form-group">
+        <i class="icon-calendar form-group-icon"></i>
+        <input type="text" class="form-control" id="travel-dates" name="travel_dates"
+               placeholder="Do you have dates in mind for treatment/holiday?">
+      </div>
+    </div>
 
-                    <!-- Insurance -->
-                    <div class="col-sm-12">
-                    <div class="form-group">
-                        <i class="icon-news form-group-icon"></i>
-                        <textarea class="form-control" id="insurance" name="insurance"
-                        placeholder="13) Do you have medical insurance back home? What kind?" rows="2"></textarea>
-                    </div>
-                    </div>
+    <!-- City / Postcode / Departure airport -->
+    <div class="col-sm-12 col-md-4">
+      <div class="form-group">
+        <i class="icon-location form-group-icon"></i>
+        <input type="text" class="form-control" id="city" name="city" placeholder="Current city">
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="form-group">
+        <i class="icon-location form-group-icon"></i>
+        <input type="text" class="form-control" id="postcode" name="postcode" placeholder="Postcode">
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="form-group">
+        <i class="icon-airplane form-group-icon"></i>
+        <input type="text" class="form-control" id="departure-airport" name="departure_airport" placeholder="Departure airport">
+      </div>
+    </div>
 
-                    <!-- Submit -->
-                    <div class="col-12">
-                    <button type="submit" class="btn btn__secondary btn__rounded btn__block btn__xhight mt-10">
-                        <span>Get Free Second Opinion</span> <i class="icon-arrow-right"></i>
-                    </button>
-                    <div class="contact-result"></div>
-                    </div>
-                </div><!-- /.row -->
-                </form>
+    <!-- Submit -->
+    <div class="col-12">
+      <button type="submit" class="btn btn__secondary btn__rounded btn__block btn__xhight mt-10">
+        <span>Get Free Second Opinion</span> <i class="icon-arrow-right"></i>
+      </button>
+      <div class="contact-result"></div>
+    </div>
+  </div><!-- /.row -->
+</form>
               
             </div>
           </div><!-- /.col-lg-6 -->
