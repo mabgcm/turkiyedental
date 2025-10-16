@@ -4381,8 +4381,11 @@ input[type=radio] {
 }
 
 .slider .slide-item {
-  height: calc(100vh - 165px);
-  min-height: 550px;
+  height: 75vh;
+  /* 75% of the viewport height */
+  min-height: 400px;
+  /* ensures it's not too small on short screens */
+  object-fit: cover;
 }
 
 .slider .slide__subtitle {
@@ -4495,7 +4498,7 @@ input[type=radio] {
 @media (min-width: 1200px) {
   .slider .slick-arrow {
     width: 50px;
-    height: 50px;
+    height: 75vh;
     line-height: 50px;
   }
 
@@ -4557,14 +4560,14 @@ input[type=radio] {
   }
 
   .slider .slide-item {
-    min-height: 0;
+    min-height: 400px;
     padding: 100px 10px;
-    height: auto !important;
+    height: 75vh;
   }
 
   .slider .slide__desc {
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 700;
     margin-bottom: 20px;
   }
 }
