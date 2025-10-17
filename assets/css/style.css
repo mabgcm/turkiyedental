@@ -8467,6 +8467,8 @@ textarea.form-control {
 }
 
 .process-item .process__desc {
+  font-size: 0.91rem;
+  font-weight: 800;
   margin-bottom: 20px;
 }
 
